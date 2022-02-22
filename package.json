@@ -5,6 +5,7 @@
     "@discordjs/rest": "0.3.x",
     "discord-api-types": "0.26.x",
     "discord.js": "13.x",
+    "dotenv": "16.x",
     "ts-node": "10.x",
     "tsconfig-paths": "3.x"
   },
@@ -40,7 +41,7 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "rest": "yarn --silent script src/rest.ts",
-    "script": "node -r ts-node/register -r tsconfig-paths/register",
+    "script": "node -r ts-node/register -r tsconfig-paths/register -r dotenv/config",
     "test": "jest",
     "test:unit": "jest spec/*"
   },
