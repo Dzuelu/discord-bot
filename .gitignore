@@ -1,0 +1,12 @@
+# Ignore all files by default, but scan all directories
+*
+!*/
+
+# Don't ignore
+!*.ts
+!*.json
+!*.md
+!yarn.lock
+
+# Always ignore
+node_modules

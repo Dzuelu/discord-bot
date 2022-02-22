@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "baseUrl": "./src",
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "lib": ["ES2021"],
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "target": "ES2021"
+  },
+  "exclude": ["node_modules"]
+}
