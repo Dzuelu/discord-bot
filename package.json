@@ -1,9 +1,9 @@
 {
   "author": "Dzuelu <Dzuelu@users.noreply.github.com>",
   "dependencies": {
-    "discord-api-types": "0.26.x",
-    "@discordjs/rest": "0.3.x",
     "@discordjs/builders": "0.12.x",
+    "@discordjs/rest": "0.3.x",
+    "discord-api-types": "0.26.x",
     "discord.js": "13.x"
   },
   "devDependencies": {
