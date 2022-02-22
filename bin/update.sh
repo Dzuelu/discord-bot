@@ -10,7 +10,7 @@ docker stop DiscordBot
 git pull
 
 # Build docker image
-docker build -t DiscordBot:latest -f- . <<EOF
+docker build -t discord-bot:latest -f- . <<EOF
 FROM node:16
 
 EXPOSE 8080
@@ -18,7 +18,7 @@ EXPOSE 8080
 WORKDIR /app
 COPY package.json ./
 COPY yarn.lock ./
-RUN yarn install --frozen-lockfile
+RUN yarn install --production --frozen-lockfile
 
 # Bundle app source
 COPY . .
@@ -31,4 +31,4 @@ CMD [ "yarn", "client" ]
 EOF
 
 # Run new image
-
+docker run -d --name DiscordBot discord-bot:latest 
