@@ -4,7 +4,9 @@
     "@discordjs/builders": "0.12.x",
     "@discordjs/rest": "0.3.x",
     "discord-api-types": "0.26.x",
-    "discord.js": "13.x"
+    "discord.js": "13.x",
+    "ts-node": "10.x",
+    "tsconfig-paths": "3.x"
   },
   "devDependencies": {
     "@types/jest": "27.x",
@@ -23,8 +25,6 @@
     "prettier": "2.x",
     "prettier-eslint": "13.x",
     "ts-jest": "27.x",
-    "ts-node": "10.x",
-    "tsconfig-paths": "3.x",
     "typescript": "4.4.x"
   },
   "engines": {
