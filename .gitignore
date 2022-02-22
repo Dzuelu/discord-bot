@@ -4,6 +4,7 @@
 
 # Don't ignore
 !*.ts
+!*.sh
 !*.js
 !*.json
 !*.md

@@ -36,13 +36,14 @@
   "private": false,
   "repository": "git@github.com:Dzuelu/discord-bot.git",
   "scripts": {
-    "rest": "yarn --silent script src/rest.ts",
     "client": "yarn --silent script src/client.ts",
-    "script": "node -r ts-node/register -r tsconfig-paths/register",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
+    "rest": "yarn --silent script src/rest.ts",
+    "script": "node -r ts-node/register -r tsconfig-paths/register",
     "test": "jest",
-    "test:unit": "jest spec/*"
+    "test:unit": "jest spec/*",
+    "update": "./bin/update.sh"
   },
   "version": "1.0.0"
 }
