@@ -10,6 +10,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16
-      - run: yarn install
+      - run: node -v
+      - run: yarn -v
+      - run: yarn install --frozen-lockfile
       - run: yarn lint
       - run: yarn test
