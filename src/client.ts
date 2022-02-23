@@ -1,5 +1,5 @@
 import { commandList } from 'commands';
-import { Client, Intents, TextChannel } from 'discord.js';
+import { Client, Intents } from 'discord.js';
 import { discordToken } from 'utils';
 
 const client = new Client({
@@ -8,12 +8,18 @@ const client = new Client({
 });
 
 client.on('ready', async () => {
-  await (client.channels.cache.get('generalies') as TextChannel).send('Bot started!');
   console.log('ready');
 });
 
+client.on('messageCreate', async message => {
+  console.log('messageCreate');
+  if (message.content.includes('brain')) {
+    await message.reply({ content: 'brains' });
+  }
+});
+
 client.on('interactionCreate', async interaction => {
-  console.log('interaction started');
+  console.log('interactionCreate');
   if (!interaction.isCommand() || interaction.command == null) return;
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
