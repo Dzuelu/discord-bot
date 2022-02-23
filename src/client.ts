@@ -1,17 +1,19 @@
 import { commandList } from 'commands';
-import { Client, Intents } from 'discord.js';
+import { Client, Intents, TextChannel } from 'discord.js';
 import { discordToken } from 'utils';
 
 const client = new Client({
-  intents: [Intents.FLAGS.GUILDS],
+  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
   partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'USER', 'GUILD_MEMBER']
 });
 
-client.on('ready', () => {
+client.on('ready', async () => {
+  await (client.channels.cache.get('generalies') as TextChannel).send('Bot started!');
   console.log('ready');
 });
 
 client.on('interactionCreate', async interaction => {
+  console.log('interaction started');
   if (!interaction.isCommand() || interaction.command == null) return;
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
