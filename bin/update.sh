@@ -5,6 +5,7 @@
 
 # Stop old image
 docker stop DiscordBot
+docker rm DiscordBot
 
 # Update the local code
 git pull
