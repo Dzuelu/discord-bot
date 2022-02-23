@@ -2,7 +2,10 @@ import { commandList } from 'commands';
 import { Client, Intents } from 'discord.js';
 import { discordToken } from 'utils';
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({
+  intents: [Intents.FLAGS.GUILDS],
+  partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'USER', 'GUILD_MEMBER']
+});
 
 client.on('ready', () => {
   console.log('ready');
