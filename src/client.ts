@@ -13,8 +13,8 @@ client.on('ready', async () => {
 
 client.on('messageCreate', async message => {
   console.log('messageCreate');
-  if (message.content.includes('brain')) {
-    await message.reply({ content: 'brains' });
+  if (message.content.includes('brain') && !message.author.bot) {
+    await message.react('<:nicecock:809906065247436830>');
   }
 });
 
