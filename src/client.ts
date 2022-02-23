@@ -9,6 +9,7 @@ const client = new Client({
 
 client.on('ready', async () => {
   console.log('ready');
+  console.log(client.channels.cache.keys());
 });
 client.on('messageCreate', messageCreate);
 client.on('interactionCreate', interactionCreate);
