@@ -741,7 +741,7 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
-"@types/node-cron@^3.0.1":
+"@types/node-cron@3.x":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@types/node-cron/-/node-cron-3.0.1.tgz#e01a874d4c2aa1a02ebc64cfd1cd8ebdbad7a996"
   integrity sha512-BkMHHonDT8NJUE/pQ3kr5v2GLDKm5or9btLBoBx4F2MB2cuqYC748LYMDC55VlrLI5qZZv+Qgc3m4P3dBPcmeg==
