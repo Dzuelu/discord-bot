@@ -9,10 +9,10 @@ const reactWith = async (content: string, keyWords: string[], message: Message<b
 
 export const anyContent = async (message: Message<boolean>): Promise<void> => {
   await Promise.all([
-    reactWith('<:809906065247436830>', ['brain', 'bot', 'coc'], message),
-    reactWith('<:676623420997238784>', ['69', 'nice'], message),
-    reactWith('<:636992777099542530>', ['jojo'], message),
-    reactWith('<:854864449101103105>', ['cow'], message),
-    reactWith('<:854863643115520020>', ['but', 'bun'], message)
+    reactWith('809906065247436830', ['brain', 'bot', 'coc'], message),
+    reactWith('676623420997238784', ['69', 'nice'], message),
+    reactWith('636992777099542530', ['jojo'], message),
+    reactWith('854864449101103105', ['cow'], message),
+    reactWith('854863643115520020', ['but', 'bun'], message)
   ]);
 };
