@@ -32,4 +32,4 @@ CMD [ "yarn", "client" ]
 EOF
 
 # Run new image
-docker run -d --name DiscordBot discord-bot:latest 
+docker run -d --name DiscordBot --restart on-failure discord-bot:latest 
