@@ -1,6 +1,7 @@
 import { Client, Intents } from 'discord.js';
-import { interactionCreate, messageCreate } from 'handlers';
+import { cronDaily, interactionCreate, messageCreate } from 'handlers';
 import { discordToken } from 'utils';
+import { schedule } from 'node-cron';
 
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
@@ -9,9 +10,14 @@ const client = new Client({
 
 client.on('ready', async () => {
   console.log('ready');
-  console.log(client.channels.cache.keys());
+  const generalChannel = client.channels.cache.get('223498053246648321');
+  if (generalChannel?.isText()) {
+    generalChannel.send('I awake');
+  }
 });
+
 client.on('messageCreate', messageCreate);
 client.on('interactionCreate', interactionCreate);
+schedule('0 12 * * *', () => cronDaily(client));
 
 client.login(discordToken());

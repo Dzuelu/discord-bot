@@ -3,9 +3,11 @@
   "dependencies": {
     "@discordjs/builders": "0.12.x",
     "@discordjs/rest": "0.3.x",
+    "@types/node-cron": "^3.0.1",
     "discord-api-types": "0.26.x",
     "discord.js": "13.x",
     "dotenv": "16.x",
+    "node-cron": "3.x",
     "ts-node": "10.x",
     "tsconfig-paths": "3.x"
   },
