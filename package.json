@@ -3,7 +3,6 @@
   "dependencies": {
     "@discordjs/builders": "0.12.x",
     "@discordjs/rest": "0.3.x",
-    "@types/node-cron": "^3.0.1",
     "discord-api-types": "0.26.x",
     "discord.js": "13.x",
     "dotenv": "16.x",
@@ -13,6 +12,7 @@
   },
   "devDependencies": {
     "@types/jest": "27.x",
+    "@types/node-cron": "3.x",
     "@typescript-eslint/eslint-plugin": "4.x",
     "@typescript-eslint/parser": "4.x",
     "eslint": "7.x",
