@@ -7,5 +7,7 @@ export const ping: CommandItem = {
     await sleep(1000);
     await interaction.reply({ content: 'pong!' });
   },
-  slashCommand: new SlashCommandBuilder().setName('ping').setDescription('Replies with Pong!')
+  slashCommand: new SlashCommandBuilder()
+    .setName('ping')
+    .setDescription('Replies with Pong! Test the bot lives with this command.')
 };

@@ -52,10 +52,8 @@ export const roll: CommandItem = {
   execute: async (interaction): Promise<void> => {
     const input = interaction.options.getString('input');
     if (input == null) {
-      console.log('generating 1d6 roll', { roll: generateOutput('1d6') });
       await interaction.reply({ content: `Rolling a 1d6 because your so indecisive...\n${generateOutput('1d6')}` });
     } else {
-      console.log('generating roll', { roll: generateOutput(input) });
       await interaction.reply({ content: generateOutput(input) });
     }
   },
