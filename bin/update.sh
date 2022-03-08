@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# This 'app' is run on a raspberryPi. To update I have to ssh into the Pi and run this script.
-# Eventually I would like to find a way to redeploy this to the pi with a github action
-# or similar but for now this will do.
+# This script sets up a docker image that contains the ssh keys
+# to pull from a private repo on github. Allows an /update 
+# command that restarts the docker container and pulls the new
+# code to run easily.
 
 # Stop old image
 docker stop DiscordBot
@@ -12,7 +13,7 @@ git pull
 
 # Build docker image
 docker build -t discord-bot:latest -f- . <<EOF
-FROM node:16 as builder
+FROM node:16
 
 RUN eval $(ssh-agent -s) &&\
     ssh-add id_ed25519 &&\
