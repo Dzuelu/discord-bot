@@ -14,9 +14,9 @@ git pull
 docker build -t discord-bot:latest -f- . <<EOF
 FROM node:16 as builder
 
-RUN eval $(ssh-agent -s) && \
-    ssh-add id_ed25519 && \
-    ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts && \
+RUN eval $(ssh-agent -s) &&\
+    ssh-add id_ed25519 &&\
+    ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts &&\
     git clone git@github.com:Dzuelu/discord-bot.git /opt/discord-bot
 
 WORKDIR /opt/discord-bot
