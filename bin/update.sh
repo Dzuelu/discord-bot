@@ -22,7 +22,7 @@ FROM node:16
 
 # Add the keys and set permissions
 RUN echo "$ssh_prv_key" > /etc/ssh/id_rsa &&\
-  echo "$ssh_pub_key" > //etcssh/id_rsa.pub &&\
+  echo "$ssh_pub_key" > /etc/ssh/id_rsa.pub &&\
   chmod 600 /etc/ssh/id_rsa &&\
   chmod 600 /etc/ssh/id_rsa.pub
 
