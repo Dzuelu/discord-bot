@@ -12,24 +12,20 @@ git pull
 
 # Build docker image
 docker build -t discord-bot:latest -f- . <<EOF
-FROM node:16
+FROM node:16 as builder
 
-EXPOSE 8080
+RUN eval $(ssh-agent) && \
+    ssh-add id_ed25519 && \
+    ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts && \
+    git clone git@github.com:Dzuelu/discord-bot.git /opt/discord-bot
 
-WORKDIR /app
-COPY package.json ./
-COPY yarn.lock ./
-RUN yarn install --production --frozen-lockfile
+WORKDIR /opt/discord-bot
+CMD [ "./bin/start.sh" ]
 
-# Bundle app source
-COPY . .
-
-# Update rest endpoints
-RUN yarn rest
-
-# Run the discord bot
-CMD [ "yarn", "client" ]
 EOF
 
 # Run new image
-docker run -d --name DiscordBot --restart on-failure discord-bot:latest 
+docker run \
+  -d --name DiscordBot \
+  --restart on-failure \
+  discord-bot:latest 
