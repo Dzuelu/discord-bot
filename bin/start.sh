@@ -2,5 +2,4 @@
 
 git pull
 yarn install --production --frozen-lockfile
-yarn rest
-yarn client
+yarn rest && yarn client
