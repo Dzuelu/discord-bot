@@ -16,7 +16,7 @@ client.on('ready', async () => {
   });
   const generalChannel = client.channels.cache.get('223498053246648321');
   if (generalChannel?.isText()) {
-    generalChannel.send('I awake');
+    // generalChannel.send('I awake');
   }
 });
 
