@@ -12,17 +12,27 @@ docker rm DiscordBot
 git pull
 
 # Build docker image
-docker build -t discord-bot:latest -f- . <<EOF
+docker build \
+  -t discord-bot:latest \
+  --build-arg ssh_prv_key="$(cat ~/.ssh/id_ed25519)" \
+  --build-arg ssh_pub_key="$(cat ~/.ssh/id_ed25519.pub)" \
+  --squash \
+  -f- . <<EOF
 FROM node:16
 
+# Add the keys and set permissions
+RUN echo "$ssh_prv_key" > /etc/ssh/id_rsa &&\
+  echo "$ssh_pub_key" > //etcssh/id_rsa.pub &&\
+  chmod 600 /etc/ssh/id_rsa &&\
+  chmod 600 /etc/ssh/id_rsa.pub
+
 RUN apt-get update \
-    && \
     apt-get install -y --no-install-recommends --no-install-suggests \
       git \
       openssh-server
 
 RUN eval $(ssh-agent -s) &&\
-    ssh-add id_ed25519 &&\
+    ssh-add id_rsa &&\
     ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts &&\
     git clone git@github.com:Dzuelu/discord-bot.git /opt/discord-bot
 
