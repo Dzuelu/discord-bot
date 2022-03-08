@@ -18,7 +18,7 @@ FROM node:16
 RUN apt-get update \
     && \
     apt-get install -y --no-install-recommends --no-install-suggests \
-      git
+      git \
       openssh-server
 
 RUN eval $(ssh-agent -s) &&\
@@ -27,7 +27,7 @@ RUN eval $(ssh-agent -s) &&\
     git clone git@github.com:Dzuelu/discord-bot.git /opt/discord-bot
 
 WORKDIR /opt/discord-bot
-CMD [ "./bin/start.sh" ]
+CMD ["./bin/start.sh"]
 
 EOF
 
