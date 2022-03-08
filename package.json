@@ -39,6 +39,7 @@
   "private": false,
   "repository": "git@github.com:Dzuelu/discord-bot.git",
   "scripts": {
+    "startup": "yarn rest && yarn client",
     "client": "yarn --silent script src/client.ts",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
