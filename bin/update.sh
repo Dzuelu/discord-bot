@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# This 'app' is run on a raspberryPi. To update I have to ssh into the Pi and run this script.
-# Eventually I would like to find a way to redeploy this to the pi with a github action
-# or similar but for now this will do.
+# This script sets up a docker image that contains the ssh keys
+# to pull from a private repo on github. Allows an /update 
+# command that restarts the docker container and pulls the new
+# code to run easily.
 
 # Stop old image
 docker stop DiscordBot
@@ -11,25 +12,37 @@ docker rm DiscordBot
 git pull
 
 # Build docker image
-docker build -t discord-bot:latest -f- . <<EOF
+docker build \
+  -t discord-bot:latest \
+  --build-arg ssh_prv_key="$(cat ~/.ssh/id_ed25519)" \
+  --build-arg ssh_pub_key="$(cat ~/.ssh/id_ed25519.pub)" \
+  --squash \
+  -f- . <<EOF
 FROM node:16
 
-EXPOSE 8080
+# Add the keys and set permissions
+RUN echo "$ssh_prv_key" > /etc/ssh/id_rsa &&\
+  echo "$ssh_pub_key" > /etc/ssh/id_rsa.pub &&\
+  chmod 600 /etc/ssh/id_rsa &&\
+  chmod 600 /etc/ssh/id_rsa.pub
 
-WORKDIR /app
-COPY package.json ./
-COPY yarn.lock ./
-RUN yarn install --production --frozen-lockfile
+RUN apt-get update \
+    apt-get install -y --no-install-recommends --no-install-suggests \
+      git \
+      openssh-server
 
-# Bundle app source
-COPY . .
+RUN eval $(ssh-agent -s) &&\
+    ssh-add id_rsa &&\
+    ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts &&\
+    git clone git@github.com:Dzuelu/discord-bot.git /opt/discord-bot
 
-# Update rest endpoints
-RUN yarn rest
+WORKDIR /opt/discord-bot
+CMD ["./bin/start.sh"]
 
-# Run the discord bot
-CMD [ "yarn", "client" ]
 EOF
 
 # Run new image
-docker run -d --name DiscordBot --restart on-failure discord-bot:latest 
+docker run \
+  -d --name DiscordBot \
+  --restart on-failure \
+  discord-bot:latest 
