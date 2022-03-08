@@ -15,6 +15,12 @@ git pull
 docker build -t discord-bot:latest -f- . <<EOF
 FROM node:16
 
+RUN apt-get update \
+    && \
+    apt-get install -y --no-install-recommends --no-install-suggests \
+      git
+      openssh-server
+
 RUN eval $(ssh-agent -s) &&\
     ssh-add id_ed25519 &&\
     ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts &&\
