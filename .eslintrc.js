@@ -32,7 +32,7 @@ module.exports = {
     'no-throw-literal': 'error',
     'no-underscore-dangle': 'error',
     'node/no-extraneous-import': 'error',
-    'node/no-missing-import': ['error', { tryExtensions: ['.ts', '.js'] }],
+    'node/no-missing-import': ['error', { tryExtensions: ['.ts', '.d.ts', '.js'] }],
     'node/no-unpublished-import': 'off',
     'node/no-unsupported-features/es-syntax': 'off',
     'prettier/prettier': [
