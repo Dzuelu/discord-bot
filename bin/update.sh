@@ -7,39 +7,39 @@
 # Stop old image
 docker stop DiscordBot
 docker rm DiscordBot
+docker image rm discord-bot
 
 # Update the local code
 git pull
 
+# temp copy ssh keys to include in image
+cp ~/.ssh/id_ed25519 bin/id_ed25519
+cp ~/.ssh/id_ed25519.pub bin/id_ed25519.pub
+
 # Build docker image
-docker build \
-  -t discord-bot:latest \
-  --build-arg ssh_prv_key="$(cat ~/.ssh/id_ed25519)" \
-  --build-arg ssh_pub_key="$(cat ~/.ssh/id_ed25519.pub)" \
-  --squash \
-  -f- . <<EOF
+docker build -t discord-bot:latest -f- . <<EOF
 FROM node:16
 
-# Add the keys and set permissions
-RUN echo "$ssh_prv_key" > /etc/ssh/id_rsa &&\
-  echo "$ssh_pub_key" > /etc/ssh/id_rsa.pub &&\
-  chmod 600 /etc/ssh/id_rsa &&\
-  chmod 600 /etc/ssh/id_rsa.pub
+# Copy over private key, and set permissions
+# Warning! Anyone who gets their hands on this image will be able
+# to retrieve this private key file from the corresponding image layer
+RUN mkdir /root/.ssh/
+ADD bin/id_ed25519 /root/.ssh/id_ed25519
+ADD bin/id_ed25519.pub /root/.ssh/id_ed25519.pub
 
-RUN apt-get update \
-    apt-get install -y --no-install-recommends --no-install-suggests \
-      git \
-      openssh-server
-
-RUN eval $(ssh-agent -s) &&\
-    ssh-add id_rsa &&\
-    ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts &&\
+RUN ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts &&\
     git clone git@github.com:Dzuelu/discord-bot.git /opt/discord-bot
 
 WORKDIR /opt/discord-bot
-CMD ["./bin/start.sh"]
 
+# Include secrets and start client
+COPY .env .env
+CMD ["./bin/start.sh"]
 EOF
+
+# remove our temp ssh keys
+rm bin/id_ed25519
+rm bin/id_ed25519.pub
 
 # Run new image
 docker run \

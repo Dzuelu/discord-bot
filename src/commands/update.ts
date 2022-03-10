@@ -6,6 +6,7 @@ export const update: CommandItem = {
     const authorizedUsers = ['223579812080386058'];
     if (authorizedUsers.includes(interaction.member?.user.id ?? 'unauthorized...')) {
       await interaction.reply({ content: 'Ok, I sleep.' });
+      process.abort();
     } else {
       // Ignore command. This shows a no-response message in the discord ui for the non-authorized user
     }
