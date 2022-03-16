@@ -10,6 +10,7 @@ const setActivity = async (client: Client<boolean>): Promise<void> => {
       { name: 'Skyrim with ToddBot', type: ActivityTypes.PLAYING },
       { name: 'Skyrim with ToddBot', type: ActivityTypes.COMPETING },
       { name: 'ToddBot talk about Skyrim', type: ActivityTypes.LISTENING },
+      { name: 'Looking up magic tricks to make friends' },
       { name: 'bideos', type: ActivityTypes.WATCHING },
       {
         name: 'a video to cool people',
