@@ -2,9 +2,7 @@ import { commandList } from 'commands';
 import { Interaction, CacheType } from 'discord.js';
 
 export const interactionCreate = async (interaction: Interaction<CacheType>): Promise<void> => {
-  console.log('starting interactionCreate');
   if (!interaction.isCommand()) return;
-  console.log(`interactionName: ${interaction.commandName}`);
 
   const currentCommand = commandList.find(command => command.slashCommand.name === interaction.commandName);
 

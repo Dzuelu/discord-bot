@@ -1,15 +1,26 @@
-import { ActivityOptions, Client } from 'discord.js';
+import { Client } from 'discord.js';
 import { ActivityTypes } from 'discord.js/typings/enums';
 import { randomFrom } from 'utils';
 
-const randomStatuses: ActivityOptions[] = [
-  {},
-  { name: 'Skyrim with ToddBot', type: ActivityTypes.PLAYING },
-  { name: 'with ToddBot', type: ActivityTypes.COMPETING },
-  { name: 'to ToddBot', type: ActivityTypes.LISTENING },
-  { name: 'videos', type: ActivityTypes.WATCHING }
-];
+const setActivity = async (client: Client<boolean>): Promise<void> => {
+  await client.user?.setActivity(
+    randomFrom(
+      {},
+      { name: 'bideo james, ur not invited.', type: ActivityTypes.PLAYING },
+      { name: 'Skyrim with ToddBot', type: ActivityTypes.PLAYING },
+      { name: 'Skyrim with ToddBot', type: ActivityTypes.COMPETING },
+      { name: 'ToddBot talk about Skyrim', type: ActivityTypes.LISTENING },
+      { name: 'bideos', type: ActivityTypes.WATCHING },
+      {
+        name: 'a video to cool people',
+        type: ActivityTypes.STREAMING,
+        url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+      },
+      { name: 'for any foul play...', type: ActivityTypes.WATCHING }
+    )
+  );
+};
 
 export const cronDaily = async (client: Client<boolean>): Promise<void> => {
-  await client.user?.setActivity(randomFrom(...randomStatuses));
+  await setActivity(client);
 };
