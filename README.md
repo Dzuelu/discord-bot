@@ -10,7 +10,7 @@ That VM will pull the repo and node v16, and will then run the following command
 - `yarn test:unit` will run all the unit tests for the project contained in [spec](spec/)
 
 If all commands succeeded, the github branch will have a green check after it's done.
-If something failed, it will have a red check and should not be merged into master until it's fixed.
+If something failed, it will have a red check and can not not be merged into master until it's fixed.
 
 ## Startup
 When starting up, the bot will run the following commands
