@@ -1,3 +1,5 @@
 FROM node:16
 
-CMD ["yarn install --production --frozen-lockfile && yarn startup"]
+RUN yarn install --production --frozen-lockfile
+
+CMD ["yarn startup"]
