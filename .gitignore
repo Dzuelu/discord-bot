@@ -9,6 +9,7 @@
 !*.json
 !*.md
 !yarn.lock
+!dockerfile
 
 # Always ignore
 node_modules
