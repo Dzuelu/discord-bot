@@ -1,2 +1,2 @@
-export * from './anyContent';
+export * from './reactionForAnyContent';
 export * from './iSleep';

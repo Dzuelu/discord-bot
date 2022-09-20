@@ -1,14 +1,14 @@
 import { Message } from 'discord.js';
 
-const reactWith = async (content: string, keyWords: string[], message: Message<boolean>): Promise<void> => {
+const reactWith = async (reactionId: string, keyWords: string[], message: Message<boolean>): Promise<void> => {
   const keyWordsFound = keyWords.filter(keyWord => message.content.includes(keyWord));
   if (keyWordsFound.length > 0) {
-    console.log(`message id (${message.id}) reacted with ${content} because of (${keyWordsFound.join(',')})`);
-    await message.react(content);
+    console.log(`message (${message.content}) reacted with ${reactionId} because of (${keyWordsFound.join(',')})`);
+    await message.react(reactionId);
   }
 };
 
-export const anyContent = async (message: Message<boolean>): Promise<void> => {
+export const reactionForAnyContent = async (message: Message<boolean>): Promise<void> => {
   message.client.emojis.cache.forEach(emoji => {
     if (emoji.name && message.content.includes(emoji.name)) {
       console.log(`message id (${message.id}) reacted with ${emoji.name} (${emoji.id})`);
