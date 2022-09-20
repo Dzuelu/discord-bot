@@ -1,7 +1,7 @@
 import { Message } from 'discord.js';
 
 const reactWith = async (reactionId: string, keyWords: string[], message: Message<boolean>): Promise<void> => {
-  const keyWordsFound = keyWords.filter(keyWord => message.content.includes(keyWord));
+  const keyWordsFound = keyWords.filter(keyWord => message.content.toLowerCase().includes(keyWord.toLowerCase()));
   if (keyWordsFound.length > 0) {
     console.log(`message (${message.content}) reacted with ${reactionId} because of (${keyWordsFound.join(',')})`);
     await message.react(reactionId);
