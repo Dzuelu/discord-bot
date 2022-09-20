@@ -11,7 +11,8 @@ const reactWith = async (reactionId: string, keyWords: string[], message: Messag
 export const reactionForAnyContent = async (message: Message<boolean>): Promise<void> => {
   await Promise.all([
     ...message.client.emojis.cache.map(emoji =>
-      emoji.name ? reactWith(emoji.id, emoji.name.split(/(?=[A-Z])/), message) : Promise.resolve()
+      // Consider - as a space and caps as different key words when checking reactions
+      emoji.name ? reactWith(emoji.id, emoji.name.replace('-', ' ').split(/(?=[A-Z])/), message) : Promise.resolve()
     ),
     reactWith('809906065247436830', ['brain', 'bot', 'coc'], message),
     reactWith('676623420997238784', ['69', 'nice'], message),

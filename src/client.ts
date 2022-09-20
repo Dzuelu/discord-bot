@@ -1,6 +1,6 @@
 import { Client, Intents } from 'discord.js';
 import { cronDaily, interactionCreate, messageCreate } from 'handlers';
-import { discordToken } from 'utils';
+import { chance, discordToken } from 'utils';
 import { schedule } from 'node-cron';
 
 const client = new Client({
@@ -16,7 +16,7 @@ client.on('ready', async () => {
   });
   const generalChannel = client.channels.cache.get('223498053246648321');
   if (generalChannel?.isText()) {
-    generalChannel.send('I awake');
+    await chance(0.1, () => generalChannel.send('I awake'));
   }
 });
 
