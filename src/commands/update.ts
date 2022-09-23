@@ -1,6 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { PermissionsBitField } from 'discord.js';
 import { CommandItem } from 'models';
+import { no } from 'responses';
 import { randomFrom } from 'utils';
 
 export const update: CommandItem = {
@@ -10,7 +11,7 @@ export const update: CommandItem = {
       await interaction.reply({ content: randomFrom('Ok, I sleep.', 'If I must...', 'k', '💤'), ephemeral: true });
       process.abort();
     } else {
-      await interaction.reply({ content: randomFrom('Naw', "I don't think so", 'Maybe later'), ephemeral: true });
+      await interaction.reply({ content: randomFrom(...no), ephemeral: true });
     }
   },
   slashCommand: new SlashCommandBuilder()

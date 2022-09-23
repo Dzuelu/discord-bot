@@ -22,7 +22,7 @@ client.on('ready', async () => {
 });
 
 client.on('messageCreate', messageCreate);
-client.on('interactionCreate', interactionCreate);
+client.on('interactionCreate', interaction => interactionCreate(interaction, client));
 schedule('0 12 * * *', () => cronDaily(client));
 
 client.login(discordToken());

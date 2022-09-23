@@ -6,11 +6,11 @@ import { getDebug, setDebug } from 'utils';
 export const debug: CommandItem = {
   execute: async (interaction): Promise<void> => {
     setDebug(!getDebug());
-    await interaction.reply({ content: `Debug set to: ${getDebug()}` });
+    await interaction.reply({ content: `Debug set to: ${getDebug()}`, ephemeral: true });
   },
   slashCommand: new SlashCommandBuilder()
     .setDefaultMemberPermissions(new PermissionsBitField('Administrator').bitfield)
-    .setDescription('Replies with Pong! Test the bot lives with this command.')
+    .setDescription('Toggles debug. You will never see the difference if you are not Kenny.')
     .setDMPermission(true)
     .setName('toggle-debug')
 };

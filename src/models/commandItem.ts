@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
-import { CommandInteraction, CacheType } from 'discord.js';
+import { CommandInteraction, CacheType, Client } from 'discord.js';
 
 export interface CommandItem {
-  execute: (interaction: CommandInteraction<CacheType>) => Promise<void>;
+  execute: (interaction: CommandInteraction<CacheType>, client: Client) => Promise<void>;
   slashCommand: SlashCommandBuilder;
 }
