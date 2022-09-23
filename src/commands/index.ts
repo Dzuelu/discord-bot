@@ -1,5 +1,12 @@
+import { debug } from './debug';
 import { ping } from './ping';
 import { roll } from './roll';
 import { update } from './update';
 
-export const commandList = [ping, roll, update];
+export const commandList = [
+  // Gotta keep it sorted!
+  debug,
+  ping,
+  roll,
+  update
+];

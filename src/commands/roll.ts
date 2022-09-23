@@ -3,9 +3,10 @@ import { CommandItem } from 'models';
 
 const slashCommand = new SlashCommandBuilder();
 slashCommand
-  .setName('roll')
+  .addStringOption(option => option.setName('input').setDescription('The dice descriptions').setRequired(false))
   .setDescription('Rolls dice between 1 and the given number')
-  .addStringOption(option => option.setName('input').setDescription('The dice descriptions').setRequired(false));
+  .setDMPermission(true)
+  .setName('roll');
 
 const add = (accumulator, a): number => accumulator + a;
 const randomBetween = (min: number, max: number): number => Math.floor(Math.random() * (max - min + 1) + min);
@@ -50,6 +51,8 @@ const generateOutput = (input: string): string => {
 
 export const roll: CommandItem = {
   execute: async (interaction): Promise<void> => {
+    if (!interaction.isChatInputCommand()) return;
+
     const input = interaction.options.getString('input');
     if (input == null) {
       await interaction.reply({ content: `Rolling a 1d6 because your so indecisive...\n${generateOutput('1d6')}` });

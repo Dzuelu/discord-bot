@@ -1,11 +1,10 @@
 {
   "author": "Dzuelu <Dzuelu@users.noreply.github.com>",
   "dependencies": {
-    "@discordjs/builders": "0.12.x",
-    "@discordjs/rest": "0.3.x",
-    "discord-api-types": "0.26.x",
-    "discord.js": "13.x",
-    "dotenv": "16.x",
+    "@discordjs/builders": "1.x",
+    "@discordjs/rest": "1.x",
+    "discord-api-types": "0.37.x",
+    "discord.js": "14.x",
     "node-cron": "3.x",
     "ts-node": "10.x",
     "tsconfig-paths": "3.x"

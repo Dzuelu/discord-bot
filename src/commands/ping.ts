@@ -8,6 +8,6 @@ export const ping: CommandItem = {
     await interaction.reply({ content: 'pong!' });
   },
   slashCommand: new SlashCommandBuilder()
-    .setName('ping')
     .setDescription('Replies with Pong! Test the bot lives with this command.')
+    .setName('ping')
 };
