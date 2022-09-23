@@ -10,10 +10,6 @@ const client = new Client({
 
 client.on('ready', async () => {
   console.log('ready');
-  client.guilds.cache.forEach(guild => {
-    console.log(`${guild.name} (${guild.id}) emojis:`);
-    guild.emojis.cache.each(e => console.log(`${e.id}: ${e.name}`));
-  });
   const generalChannel = client.channels.cache.get('223498053246648321'); // wrinkle brains general
   await chance(
     0.1,
