@@ -1,9 +1,13 @@
 import { Message } from 'discord.js';
 import { reactionForAnyContent } from 'reactions';
-import { chance } from 'utils';
+import { chance, getDebug } from 'utils';
 
 export const messageCreate = async (message: Message<boolean>): Promise<void> => {
-  Promise.all([
+  if (getDebug()) {
+    console.log('on:messageCreate', message.toJSON());
+  }
+
+  await Promise.all([
     //
     chance(0.001, () => message.reply('💤💤💤 I sleep. 💤💤💤')),
     reactionForAnyContent(message)
