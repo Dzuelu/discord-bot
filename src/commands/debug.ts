@@ -12,5 +12,5 @@ export const debug: CommandItem = {
     .setDefaultMemberPermissions(new PermissionsBitField('Administrator').bitfield)
     .setDescription('Replies with Pong! Test the bot lives with this command.')
     .setDMPermission(true)
-    .setName('toggleDebug')
+    .setName('toggle-debug')
 };
