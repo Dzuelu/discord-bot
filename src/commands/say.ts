@@ -9,7 +9,8 @@ export const say: CommandItem = {
 
     const interactionChannel = client.channels.cache.get(interaction.channelId);
     if (interactionChannel && input && interactionChannel.isTextBased()) {
-      await Promise.all([interaction.deferReply(), interactionChannel.send(input)]);
+      await interaction.deferReply();
+      await interactionChannel.send(input);
     }
   },
   slashCommand: new SlashCommandBuilder()
