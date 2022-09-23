@@ -1,5 +1,5 @@
 import { ping } from 'commands/ping';
-import { CommandInteraction, CacheType } from 'discord.js';
+import { CommandInteraction, CacheType, Client } from 'discord.js';
 
 describe('ping', () => {
   it('replys pong', async () => {
@@ -7,7 +7,7 @@ describe('ping', () => {
       reply: jest.fn()
     } as unknown as CommandInteraction<CacheType>;
 
-    await ping.execute(interaction);
+    await ping.execute(interaction, jest.fn() as unknown as Client);
 
     expect(interaction.reply).toHaveBeenCalledWith({ content: 'pong!' });
   });
