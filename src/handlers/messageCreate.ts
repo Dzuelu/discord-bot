@@ -1,8 +1,11 @@
 import { Message } from 'discord.js';
-import { reactionForAnyContent, iSleep } from 'reactions';
+import { checkIfDM, reactionForAnyContent } from 'reactions';
 import { chance } from 'utils';
 
 export const messageCreate = async (message: Message<boolean>): Promise<void> => {
-  chance(0.001, () => iSleep(message));
-  reactionForAnyContent(message);
+  Promise.all([
+    checkIfDM(message),
+    chance(0.001, () => message.reply('💤💤💤 I sleep. 💤💤💤')),
+    reactionForAnyContent(message)
+  ]);
 };

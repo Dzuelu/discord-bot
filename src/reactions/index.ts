@@ -1,2 +1,2 @@
+export * from './checkIfDM';
 export * from './reactionForAnyContent';
-export * from './iSleep';
