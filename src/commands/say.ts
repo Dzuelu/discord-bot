@@ -10,6 +10,7 @@ export const say: CommandItem = {
     const interactionChannel = client.channels.cache.get(interaction.channelId);
     if (interactionChannel && input && interactionChannel.isTextBased()) {
       await interaction.reply({ content: 'Done', ephemeral: true });
+      await interaction.deleteReply();
       await interactionChannel.send(input);
     }
   },
