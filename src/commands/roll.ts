@@ -1,13 +1,6 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { CommandItem } from 'models';
 
-const slashCommand = new SlashCommandBuilder();
-slashCommand
-  .addStringOption(option => option.setName('input').setDescription('The dice descriptions').setRequired(false))
-  .setDescription('Rolls dice between 1 and the given number')
-  .setDMPermission(true)
-  .setName('roll');
-
 const add = (accumulator, a): number => accumulator + a;
 const randomBetween = (min: number, max: number): number => Math.floor(Math.random() * (max - min + 1) + min);
 const parseNum = (num: string, defaultNum = 1): number => {
@@ -60,5 +53,9 @@ export const roll: CommandItem = {
       await interaction.reply({ content: generateOutput(input) });
     }
   },
-  slashCommand
+  slashCommand: new SlashCommandBuilder()
+    .addStringOption(option => option.setName('input').setDescription('The dice descriptions').setRequired(false))
+    .setDescription('Rolls dice between 1 and the given number')
+    .setDMPermission(true)
+    .setName('roll')
 };

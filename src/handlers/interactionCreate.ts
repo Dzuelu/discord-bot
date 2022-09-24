@@ -2,7 +2,7 @@ import { commandList } from 'commands';
 import { Interaction, CacheType, Client } from 'discord.js';
 import { getDebug } from 'utils';
 
-export const interactionCreate = async (interaction: Interaction<CacheType>, client: Client): Promise<void> => {
+export const interactionCreate = async (interaction: Interaction<CacheType>, server: Client): Promise<void> => {
   if (getDebug()) {
     console.log('on:interactionCreate', interaction.toJSON());
   }
@@ -12,7 +12,7 @@ export const interactionCreate = async (interaction: Interaction<CacheType>, cli
 
   if (currentCommand) {
     try {
-      await currentCommand.execute(interaction, client);
+      await currentCommand.execute(interaction, server);
     } catch (error) {
       console.error('Error when executing a command in interactionCreate', error);
     }

@@ -3,13 +3,13 @@ import { PermissionsBitField } from 'discord.js';
 import { CommandItem } from 'models';
 
 export const say: CommandItem = {
-  execute: async (interaction, client): Promise<void> => {
+  execute: async (interaction, server): Promise<void> => {
     if (!interaction.isChatInputCommand()) return;
     const input = interaction.options.getString('input');
 
-    const interactionChannel = client.channels.cache.get(interaction.channelId);
+    const interactionChannel = server.channels.cache.get(interaction.channelId);
     if (interactionChannel && input && interactionChannel.isTextBased()) {
-      await interaction.reply({ content: 'It is done.', ephemeral: true });
+      await interaction.reply({ content: 'Consider it done.', ephemeral: true });
       await interactionChannel.send(input);
     }
   },
