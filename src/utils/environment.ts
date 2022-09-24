@@ -7,5 +7,4 @@ const envVar = <T>(envKey: string): T => {
 };
 
 export const discordClientId = (): string => envVar('DISCORD_CLIENT_ID');
-export const discordGuildId = (): string => envVar('DISCORD_GUILD_ID');
 export const discordToken = (): string => envVar('DISCORD_TOKEN');

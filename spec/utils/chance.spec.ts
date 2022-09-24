@@ -7,7 +7,7 @@ describe('chance', () => {
 
     await chance(0.2, mockCallFunction);
 
-    expect(mockCallFunction).toBeCalledTimes(1);
+    expect(mockCallFunction).toHaveBeenCalledTimes(1);
   });
 
   it('does not call the function when the chance is over the random value', async () => {
@@ -16,7 +16,7 @@ describe('chance', () => {
 
     await chance(0.2, mockCallFunction);
 
-    expect(mockCallFunction).toBeCalledTimes(0);
+    expect(mockCallFunction).toHaveBeenCalledTimes(0);
   });
 
   it('does not call the function when the chance is equal to the random value', async () => {
@@ -25,6 +25,6 @@ describe('chance', () => {
 
     await chance(0.2, mockCallFunction);
 
-    expect(mockCallFunction).toBeCalledTimes(0);
+    expect(mockCallFunction).toHaveBeenCalledTimes(0);
   });
 });
