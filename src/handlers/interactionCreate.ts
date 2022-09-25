@@ -4,7 +4,7 @@ import { getDebug } from 'utils';
 
 export const interactionCreate = async (interaction: Interaction<CacheType>, server: Client): Promise<void> => {
   if (getDebug()) {
-    console.log('on:interactionCreate', interaction.toJSON());
+    console.log('on:interactionCreate', interaction.valueOf());
   }
   if (!interaction.isCommand()) return;
 

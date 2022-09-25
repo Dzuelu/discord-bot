@@ -7,7 +7,7 @@ import { randomFrom } from 'utils';
 export const update: CommandItem = {
   execute: async (interaction): Promise<void> => {
     const authorizedUsers = ['223579812080386058'];
-    if (authorizedUsers.includes(interaction.member?.user.id ?? 'unauthorized...')) {
+    if (authorizedUsers.includes(interaction.user.id ?? 'unauthorized...')) {
       await interaction.reply({ content: randomFrom('Ok, I sleep.', 'If I must...', 'k', '💤'), ephemeral: true });
       process.abort();
     } else {
