@@ -12,12 +12,12 @@ server.on('ready', async () => {
   console.log('ready');
   const generalChannel = server.channels.cache.get('223498053246648321'); // wrinkle brains general
   await chance(
-    0.1,
+    0.01,
     (): Promise<unknown> => (generalChannel?.isTextBased() ? generalChannel.send('I awake!') : Promise.resolve())
   );
 });
 
-server.on('messageCreate', messageCreate);
+server.on('messageCreate', message => messageCreate(message, server));
 server.on('interactionCreate', interaction => interactionCreate(interaction, server));
 server.on('guildMemberAdd', member => memberAdded(member, server));
 schedule('0 12 * * *', () => cronDaily(server));

@@ -3,7 +3,7 @@ import { PermissionsBitField } from 'discord.js';
 import { CommandItem } from 'models';
 import { getDebug, setDebug } from 'utils';
 
-export const debug: CommandItem = {
+export const toggleDebug: CommandItem = {
   execute: async (interaction): Promise<void> => {
     setDebug(!getDebug());
     await interaction.reply({ content: `Debug set to: ${getDebug()}`, ephemeral: true });
