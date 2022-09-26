@@ -17,6 +17,6 @@ export const say: CommandItem = {
     .addStringOption(option => option.setName('input').setDescription('What to say').setRequired(true))
     .setDefaultMemberPermissions(new PermissionsBitField('Administrator').bitfield)
     .setDescription('Makes BrainBot say a thing.')
-    .setDMPermission(true)
+    .setDMPermission(false)
     .setName('say')
 };

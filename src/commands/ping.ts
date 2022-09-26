@@ -10,5 +10,6 @@ export const ping: CommandItem = {
   },
   slashCommand: new SlashCommandBuilder()
     .setDescription('Replies with Pong! Test the bot lives with this command.')
+    .setDMPermission(true)
     .setName('ping')
 };
