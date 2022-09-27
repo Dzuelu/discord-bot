@@ -1,15 +1,10 @@
-import { Client, IntentsBitField, Partials } from 'discord.js';
+import { Client, Partials } from 'discord.js';
 import { cronDaily, interactionCreate, memberAdded, messageCreate } from 'handlers';
 import { chance, discordToken } from 'utils';
 import { schedule } from 'node-cron';
 
 const server = new Client({
-  intents: [
-    IntentsBitField.Flags.Guilds,
-    IntentsBitField.Flags.GuildMessages,
-    IntentsBitField.Flags.DirectMessages,
-    IntentsBitField.Flags.MessageContent
-  ],
+  intents: ['DirectMessages', 'GuildMessageReactions', 'GuildMessages', 'Guilds', 'MessageContent'],
   partials: [Partials.Message, Partials.Channel, Partials.Reaction, Partials.User, Partials.GuildMember]
 });
 
