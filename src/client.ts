@@ -4,7 +4,12 @@ import { chance, discordToken } from 'utils';
 import { schedule } from 'node-cron';
 
 const server = new Client({
-  intents: [IntentsBitField.Flags.Guilds, IntentsBitField.Flags.GuildMessages],
+  intents: [
+    IntentsBitField.Flags.Guilds,
+    IntentsBitField.Flags.GuildMessages,
+    IntentsBitField.Flags.DirectMessages,
+    IntentsBitField.Flags.MessageContent
+  ],
   partials: [Partials.Message, Partials.Channel, Partials.Reaction, Partials.User, Partials.GuildMember]
 });
 
