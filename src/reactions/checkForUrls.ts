@@ -1,15 +1,17 @@
-/* eslint-disable max-len */
-import { Message, Client } from 'discord.js';
-import { fetchVideo } from 'tiktok-scraper-ts';
+import { Message } from 'discord.js';
+import { tiktokUrl } from './urls/tiktokUrl';
 
-export const checkForUrls = async (message: Message<boolean>, server: Client): Promise<void> => {
-  const tiktokUrl = message.content.match(/(?:(?:https?):\/\/.*\.tiktok.com\/)/);
-  if (tiktokUrl) {
-    const tiktokVideo = await fetchVideo(tiktokUrl.toString());
-    console.log(`tiktok download url found: ${tiktokVideo.downloadURL}`);
-    if (message.channelId === '1028811140630843434') {
-      // Testing
-      message.channel.send({ content: tiktokVideo.downloadURL });
-    }
-  }
+const matchers: { [key: string]: (url: string, message: Message<boolean>) => Promise<void> } = {
+  /* eslint-disable @typescript-eslint/naming-convention */
+  '/(?:(?:https?)://.*.tiktok.com/)/': tiktokUrl
+  /* eslint-enable @typescript-eslint/naming-convention */
+};
+
+export const checkForUrls = async (message: Message<boolean>): Promise<void> => {
+  await Promise.all(
+    message.content.split(' ').map(possibleUrl => {
+      const foundMatcher = Object.keys(matchers).find(regex => possibleUrl.match(regex));
+      return foundMatcher ? matchers[foundMatcher](possibleUrl, message) : Promise.resolve();
+    })
+  );
 };

@@ -9,7 +9,7 @@ export const messageCreate = async (message: Message<boolean>, server: Client): 
   if (message.flags.any('Ephemeral')) return;
 
   await Promise.all([
-    checkForUrls(message, server),
+    checkForUrls(message),
     chance(0.001, () => message.reply('💤💤💤 I sleep. 💤💤💤')),
     reactionForAnyContent(message, server)
   ]);
