@@ -10,7 +10,7 @@ export const messageCreate = async (message: Message<boolean>, server: Client): 
 
   await Promise.all([
     checkForUrls(message),
-    chance(0.001, () => message.reply('💤💤💤 I sleep. 💤💤💤')),
+    chance(0.0001, () => message.reply('💤💤💤 I sleep. 💤💤💤')),
     reactionForAnyContent(message, server)
   ]);
 };
