@@ -14,5 +14,4 @@ describe('tiktok link tests', () => {
   testLink('https://www.tiktok.com/t/ZTRyBnyYX/');
   testLink('https://www.tiktok.com/t/ZTRyNc4nB/?k=1');
   testLink('https://www.tiktok.com/@ewm_bookclub/video/7007016106502163717');
-  // testLink('https://vm.tiktok.com/ZMRQw55ME/');
 });
