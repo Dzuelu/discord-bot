@@ -1,12 +1,12 @@
 import { Message } from 'discord.js';
 import { fetchVideo } from 'tiktok-scraper-ts';
 import { get } from 'https';
-import { createWriteStream, unlinkSync } from 'fs';
+import { createWriteStream, unlinkSync, mkdtempSync } from 'fs';
 
 const downloadUrl = async (filename: string, url: string): Promise<string> =>
   new Promise((resolve, reject) => {
     get(url, res => {
-      const fileName = `./tmp/${filename}`;
+      const fileName = `${mkdtempSync('videos')}/${filename}`;
       const stream = createWriteStream(fileName);
       stream.on('error', error => reject(error));
       stream.on('finish', () => {
