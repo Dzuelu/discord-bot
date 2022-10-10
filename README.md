@@ -18,3 +18,7 @@ When starting up, the bot will run the following commands
 - `yarn client` starts up the client that the bot is contained in
 
 These commands are both started with their respective name in the [/src/\<command>.ts](/src) directory.
+
+### Helpful links
+- [Discord Developer Portal](https://discord.com/developers/applications)
+- [DiscordJS API Docs](https://discordjs.guide)

@@ -6,6 +6,7 @@
     "discord-api-types": "0.37.x",
     "discord.js": "14.x",
     "node-cron": "3.x",
+    "tiktok-scraper-ts": "1.x",
     "ts-node": "10.x",
     "tsconfig-paths": "3.x"
   },
