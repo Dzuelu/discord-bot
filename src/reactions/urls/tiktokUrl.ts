@@ -23,7 +23,8 @@ export const tiktokUrl = async (url: string, message: Message<boolean>): Promise
     const video = await fetchVideo(url);
     // Hack, should instead check the encoding in url. But this should work for now
     const file = await downloadUrl(`${video.id}.mp4`, video.downloadURL);
-    await message.channel.send({ files: [file] });
+    await message.edit({ files: [file] });
+    // await message.channel.send({ files: [file] });
     unlinkSync(file);
   } catch (error) {
     console.error('tiktokUrl error', { error, url });
