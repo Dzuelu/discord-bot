@@ -7,7 +7,7 @@ export const tiktokUrl = async (url: string, message: Message<boolean>): Promise
     if (message.channelId === '1028811140630843434') {
       // Temp channel check
       const tiktokVideo = await fetchVideo(url);
-      await message.channel.send({ content: tiktokVideo.downloadURL });
+      await message.channel.send({ files: [tiktokVideo.downloadURL] });
     }
   } catch (error) {
     console.error(error);
