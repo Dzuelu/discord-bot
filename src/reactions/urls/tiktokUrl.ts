@@ -6,7 +6,7 @@ import { createWriteStream, unlinkSync, mkdtempSync } from 'fs';
 const downloadUrl = async (filename: string, url: string): Promise<string> =>
   new Promise((resolve, reject) => {
     get(url, res => {
-      const fileName = `${mkdtempSync('videos')}/${filename}`;
+      const fileName = `${mkdtempSync('videos')}/${filename}.mp4`;
       const stream = createWriteStream(fileName);
       stream.on('error', error => reject(error));
       stream.on('finish', () => {
