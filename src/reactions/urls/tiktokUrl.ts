@@ -20,11 +20,14 @@ export const tiktokUrl = async (url: string, message: Message<boolean>): Promise
     const video = await fetchVideo(url);
     debugLog('tiktok video for url', url, video);
     if (video == null) {
+      debugLog('failed to find video');
       return;
     }
     const file = await downloadUrl(`${video.id ?? uuid()}.${video.format ?? 'mp4'}`, video.downloadURL);
     if (await verifyVideo(file)) {
       await message.channel.send({ files: [file] });
+    } else {
+      debugLog('Video file failed to validate');
     }
     unlinkSync(file);
   } catch (error) {
