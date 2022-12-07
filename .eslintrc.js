@@ -24,7 +24,7 @@ module.exports = {
       rules: {
         '@typescript-eslint/ban-ts-ignore': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
-        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off'
       }
     }
   ],
@@ -32,7 +32,7 @@ module.exports = {
   plugins: ['sort-keys-fix'],
   rules: {
     '@typescript-eslint/naming-convention': [
-      'error', 
+      'error',
       { format: null, modifiers: ['requiresQuotes'], selector: 'default' },
       { format: ['camelCase', 'PascalCase'], selector: 'default' }
     ],
