@@ -18,14 +18,29 @@ module.exports = {
     'plugin:import/typescript'
   ],
   ignorePatterns: ['node_modules'],
-  overrides: [],
+  overrides: [
+    {
+      files: ['spec/**/*.ts'],
+      rules: {
+        '@typescript-eslint/ban-ts-ignore': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+      }
+    }
+  ],
   parser: '@typescript-eslint/parser',
   plugins: ['sort-keys-fix'],
   rules: {
-    '@typescript-eslint/naming-convention': ['error', { format: ['camelCase', 'PascalCase'], selector: 'default' }],
+    '@typescript-eslint/naming-convention': [
+      'error', 
+      { format: null, modifers: ['requiresQuotes'], selector: 'default' },
+      { format: ['camelCase', 'PascalCase'], selector: 'default' }
+    ],
     camelcase: 'off',
     'import/extensions': ['error', 'never', { ignorePackages: true }],
+    'import/first': 'off',
     'import/no-unresolved': 'off',
+    'import/order': 'off',
     'import/prefer-default-export': 'off',
     'max-len': ['error', { code: 120 }],
     'no-console': 'off',

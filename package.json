@@ -8,7 +8,7 @@
     "node-cron": "3.x",
     "tiktok-scraper-ts": "1.x",
     "ts-node": "10.x",
-    "tsconfig-paths": "3.x"
+    "tsconfig-paths": "4.x"
   },
   "devDependencies": {
     "@types/jest": "29.x",
@@ -28,7 +28,7 @@
     "prettier": "2.x",
     "prettier-eslint": "15.x",
     "ts-jest": "29.x",
-    "typescript": "4.8.x"
+    "typescript": "4.9.x"
   },
   "engines": {
     "node": ">=16"
