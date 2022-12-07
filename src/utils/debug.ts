@@ -8,6 +8,6 @@ export const getDebug = (): boolean => debug;
 
 export const debugLog = (message?: unknown, ...optionalParams: unknown[]): void => {
   if (debug) {
-    console.log(message, optionalParams);
+    console.log(message, ...optionalParams);
   }
 };

@@ -25,6 +25,6 @@ describe('debug', () => {
     const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
     setDebug(true);
     debugLog('test', 'test2');
-    expect(logSpy).toHaveBeenCalledWith('test', ['test2']);
+    expect(logSpy).toHaveBeenCalledWith('test', 'test2');
   });
 });
