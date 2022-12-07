@@ -2,7 +2,10 @@ import { SlashCommandBuilder } from '@discordjs/builders';
 import { CommandItem } from 'models';
 
 const add = (accumulator, a): number => accumulator + a;
-const randomBetween = (min: number, max: number): number => Math.floor(Math.random() * (max - min + 1) + min);
+
+const randomBetween = (min: number, max: number): number =>
+  Math.round(Math.max(Math.min(Math.random() * (max - min) + min, max), min));
+
 const parseNum = (num: string, defaultNum = 1): number => {
   const parsed = parseInt(num, 10);
   if (Number.isNaN(parsed)) {
