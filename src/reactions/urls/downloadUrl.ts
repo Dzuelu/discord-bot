@@ -1,15 +1,14 @@
 import { get } from 'https';
-import { createWriteStream, mkdtempSync } from 'fs';
+import { createWriteStream } from 'fs';
 
 export const downloadUrl = async (filename: string, url: string): Promise<string> =>
   new Promise((resolve, reject) => {
     get(url, res => {
-      const fileName = `${mkdtempSync('downloads')}/${filename}`;
-      const stream = createWriteStream(fileName);
+      const stream = createWriteStream(filename);
       stream.on('error', error => reject(error));
       stream.on('finish', () => {
         stream.close();
-        resolve(fileName);
+        resolve(filename);
       });
       res.pipe(stream);
     });
