@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:18
 
 # For chromium process, see https://stackoverflow.com/a/71128432
 RUN apt-get update && \
