@@ -33,7 +33,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/naming-convention': [
       'error', 
-      { format: null, modifers: ['requiresQuotes'], selector: 'default' },
+      { format: null, modifiers: ['requiresQuotes'], selector: 'default' },
       { format: ['camelCase', 'PascalCase'], selector: 'default' }
     ],
     camelcase: 'off',
