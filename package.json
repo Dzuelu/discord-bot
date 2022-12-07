@@ -46,7 +46,8 @@
     "rest": "yarn --silent script src/rest.ts",
     "script": "node -r ts-node/register -r tsconfig-paths/register",
     "test": "jest",
-    "test:unit": "jest spec/*"
+    "test:integration": "jest spec/integration/*",
+    "test:unit": "jest spec/unit/*"
   },
   "version": "1.0.0"
 }

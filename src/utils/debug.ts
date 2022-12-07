@@ -5,3 +5,9 @@ export const setDebug = (value: boolean): void => {
 };
 
 export const getDebug = (): boolean => debug;
+
+export const debugLog = (message?: unknown, ...optionalParams: unknown[]): void => {
+  if (debug) {
+    console.log(message, optionalParams);
+  }
+};
