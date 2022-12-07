@@ -9,6 +9,7 @@ export const say: CommandItem = {
 
     const interactionChannel = server.channels.cache.get(interaction.channelId);
     if (interactionChannel && input && interactionChannel.isTextBased()) {
+      // Send an ephemeral message so no other user sees the slash command usage
       await interaction.reply({ content: 'Consider it done.', ephemeral: true });
       await interactionChannel.send(input);
     }

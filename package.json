@@ -8,11 +8,13 @@
     "node-cron": "3.x",
     "tiktok-scraper-ts": "1.x",
     "ts-node": "10.x",
-    "tsconfig-paths": "4.x"
+    "tsconfig-paths": "4.x",
+    "uuid": "9.x"
   },
   "devDependencies": {
     "@types/jest": "29.x",
     "@types/node-cron": "3.x",
+    "@types/uuid": "9.x",
     "@typescript-eslint/eslint-plugin": "5.x",
     "@typescript-eslint/parser": "5.x",
     "eslint": "8.x",
@@ -46,7 +48,8 @@
     "rest": "yarn --silent script src/rest.ts",
     "script": "node -r ts-node/register -r tsconfig-paths/register",
     "test": "jest",
-    "test:unit": "jest spec/*"
+    "test:integration": "jest spec/integration/*",
+    "test:unit": "jest spec/unit/*"
   },
   "version": "1.0.0"
 }

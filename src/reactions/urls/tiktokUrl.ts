@@ -1,19 +1,16 @@
 import { Message } from 'discord.js';
 import { fetchVideo } from 'tiktok-scraper-ts';
-import { get } from 'https';
-import { createWriteStream, unlinkSync, mkdtempSync } from 'fs';
+import { unlinkSync, readFile } from 'fs';
+import { downloadUrl } from './downloadUrl';
+import { debugLog } from 'utils';
+import { v4 as uuid } from 'uuid';
 
-const downloadUrl = async (filename: string, url: string): Promise<string> =>
-  new Promise((resolve, reject) => {
-    get(url, res => {
-      const fileName = `${mkdtempSync('videos')}/${filename}`;
-      const stream = createWriteStream(fileName);
-      stream.on('error', error => reject(error));
-      stream.on('finish', () => {
-        stream.close();
-        resolve(fileName);
-      });
-      res.pipe(stream);
+const verifyVideo = (file: string): Promise<boolean> =>
+  new Promise<boolean>((resolve, reject) => {
+    readFile(file, (error, data) => {
+      if (error) reject(error);
+      // Response will give 200, but downloaded data will have access denied html
+      resolve(data.includes('<H1>Access Denied</H1>'));
     });
   });
 
@@ -21,9 +18,14 @@ export const tiktokUrl = async (url: string, message: Message<boolean>): Promise
   console.log(`tiktok url detected: ${url}`);
   try {
     const video = await fetchVideo(url);
-    // Hack, should instead check the encoding in url. But this should work for now
-    const file = await downloadUrl(`${video.id}.mp4`, video.downloadURL);
-    await message.channel.send({ files: [file] });
+    debugLog('tiktok video for url', url, video);
+    if (video == null) {
+      return;
+    }
+    const file = await downloadUrl(`${video.id ?? uuid()}.${video.format ?? 'mp4'}`, video.downloadURL);
+    if (await verifyVideo(file)) {
+      await message.channel.send({ files: [file] });
+    }
     unlinkSync(file);
   } catch (error) {
     console.error('tiktokUrl error', { error, url });
