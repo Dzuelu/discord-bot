@@ -5,13 +5,13 @@
 # Don't ignore
 !.gitignore
 !.gitmodules
-!eslint-config
 !*.js
 !*.json
 !*.md
 !*.sh
 !*.ts
 !dockerfile
+!eslint-config
 !yarn.lock
 
 # Always ignore
