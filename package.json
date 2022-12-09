@@ -12,11 +12,11 @@
     "uuid": "9.x"
   },
   "devDependencies": {
-    "eslint-config": "file:eslint-config",
     "@types/jest": "29.x",
+    "@types/node": "18.x",
     "@types/node-cron": "3.x",
     "@types/uuid": "9.x",
-    "@types/node": "18.x",
+    "eslint-config": "file:eslint-config",
     "jest": "29.x",
     "ts-jest": "29.x",
     "typescript": "4.9.x"
