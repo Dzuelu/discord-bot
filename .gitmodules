@@ -1,0 +1,3 @@
+[submodule "eslint-config"]
+	path = eslint-config
+	url = https://github.com/Dzuelu/eslint-config
