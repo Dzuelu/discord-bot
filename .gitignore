@@ -3,13 +3,16 @@
 !*/
 
 # Don't ignore
-!*.ts
-!*.sh
+!.gitignore
+!.gitmodules
+!eslint-config
 !*.js
 !*.json
 !*.md
-!yarn.lock
+!*.sh
+!*.ts
 !dockerfile
+!yarn.lock
 
 # Always ignore
 node_modules
