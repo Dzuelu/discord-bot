@@ -1,3 +1,3 @@
-const defaultLint = require('./eslint-config/src/index.ts');
+const defaultLint = require('eslint-config');
 
 module.exports = defaultLint;
