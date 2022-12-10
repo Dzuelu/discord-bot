@@ -10,7 +10,7 @@ const verifyVideo = (file: string): Promise<boolean> =>
     readFile(file, (error, data) => {
       if (error) reject(error);
       // Response will give 200, but downloaded data will have access denied html
-      resolve(data.includes('<H1>Access Denied</H1>'));
+      resolve(!data.includes('<H1>Access Denied</H1>'));
     });
   });
 
