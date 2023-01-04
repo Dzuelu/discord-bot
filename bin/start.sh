@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+ls -la
+
 # echo node version
 node -v
 
