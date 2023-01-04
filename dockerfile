@@ -20,7 +20,6 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-COPY . .
-COPY .git .
+COPY * .
 
 CMD ["bin/start.sh"]
