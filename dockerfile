@@ -20,6 +20,6 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-ADD --keep-git-dir=true https://github.com/Dzuelu/discord-bot .
+COPY . .
 
 CMD ["bin/start.sh"]
