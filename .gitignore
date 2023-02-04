@@ -10,7 +10,7 @@
 !*.md
 !*.sh
 !*.ts
-!dockerfile
+!Dockerfile
 !eslint-config
 !yarn.lock
 
