@@ -1,6 +1,5 @@
 import { Client, Message, MessageType } from 'discord.js';
 import { reactionForAnyContent } from 'reactions';
-import { checkForUrls } from 'reactions/checkForUrls';
 import { chance, getDebug } from 'utils';
 
 export const messageCreate = async (message: Message<boolean>, server: Client): Promise<void> => {
@@ -9,7 +8,6 @@ export const messageCreate = async (message: Message<boolean>, server: Client): 
   if (message.flags.any('Ephemeral')) return;
 
   await Promise.all([
-    checkForUrls(message),
     chance(0.0001, () => message.reply('💤💤💤 I sleep. 💤💤💤')),
     reactionForAnyContent(message, server)
   ]);

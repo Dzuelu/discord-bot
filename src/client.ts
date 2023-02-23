@@ -13,7 +13,10 @@ server.on('ready', async () => {
   const generalChannel = server.channels.cache.get('223498053246648321'); // wrinkle brains general
   await chance(
     0.01,
-    (): Promise<unknown> => (generalChannel?.isTextBased() ? generalChannel.send('I awake!') : Promise.resolve())
+    (): Promise<unknown> =>
+      generalChannel?.isTextBased() && !generalChannel.isVoiceBased()
+        ? generalChannel.send('I awake!')
+        : Promise.resolve()
   );
 });
 

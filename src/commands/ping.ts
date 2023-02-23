@@ -4,7 +4,10 @@ import { sleep } from 'utils';
 
 export const ping: CommandItem = {
   execute: async (interaction): Promise<void> => {
-    await interaction.channel?.sendTyping();
+    if (!interaction.channel?.isTextBased() || interaction.channel.isVoiceBased()) {
+      return;
+    }
+    await interaction.channel.sendTyping();
     await sleep(1000);
     await interaction.reply({ content: 'pong!' });
   },

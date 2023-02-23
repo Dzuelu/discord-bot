@@ -6,7 +6,6 @@
     "discord-api-types": "0.37.x",
     "discord.js": "14.x",
     "node-cron": "3.x",
-    "tiktok-scraper-ts": "1.x",
     "ts-node": "10.x",
     "tsconfig-paths": "4.x",
     "uuid": "9.x"
@@ -30,15 +29,14 @@
   "private": false,
   "repository": "git@github.com:Dzuelu/discord-bot.git",
   "scripts": {
-    "startup": "yarn rest && yarn client",
     "client": "yarn --silent script src/client.ts",
-    "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
+    "lint": "eslint . --ext .ts",
     "rest": "yarn --silent script src/rest.ts",
     "script": "node -r ts-node/register -r tsconfig-paths/register",
-    "test": "jest",
-    "test:integration": "jest spec/integration/*",
-    "test:unit": "jest spec/unit/*"
+    "startup": "yarn rest && yarn client",
+    "test:unit": "jest spec/unit/*",
+    "test": "jest"
   },
   "version": "1.0.0"
 }
