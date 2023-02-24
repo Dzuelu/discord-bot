@@ -5,6 +5,7 @@
     "@discordjs/rest": "1.x",
     "discord-api-types": "0.37.x",
     "discord.js": "14.x",
+    "dotenv": "16.x",
     "node-cron": "3.x",
     "ts-node": "10.x",
     "tsconfig-paths": "4.x",
@@ -33,7 +34,7 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "lint": "eslint . --ext .ts",
     "rest": "yarn --silent script src/rest.ts",
-    "script": "node -r ts-node/register -r tsconfig-paths/register",
+    "script": "node -r ts-node/register -r tsconfig-paths/register -r dotenv/config",
     "startup": "yarn rest && yarn client",
     "test:unit": "jest spec/unit/*",
     "test": "jest"
