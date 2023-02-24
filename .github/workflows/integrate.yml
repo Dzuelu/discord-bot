@@ -1,18 +1,20 @@
-name: Node Continuous Integration
+name: Continuous Integration
 
 on: push
 
 jobs:
-  lint_and_test:
+  lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 18
-      - run: yarn install --frozen-lockfile
+      - name: Setup
+        uses: Dzuelu/discord-bot/.github/setup/action.yml
+      - run: yarn lint
+      - run: yarn test:unit
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup
+        uses: Dzuelu/discord-bot/.github/setup/action.yml
       - run: yarn lint
       - run: yarn test:unit
