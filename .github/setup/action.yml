@@ -3,8 +3,6 @@ name: 'Setup'
 runs:
   using: "composite"
   steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
     - name: Checkout submodules
       run: git submodule update --init --recursive
     - uses: actions/setup-node@v1
