@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup
-        uses: Dzuelu/discord-bot/.github/setup/action.yml
+        uses: ./.github/setup/action.yml@workflow
       - run: yarn lint
       - run: yarn test:unit
 
@@ -15,6 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup
-        uses: Dzuelu/discord-bot/.github/setup/action.yml
+        uses: ./.github/setup/action.yml@workflow
       - run: yarn lint
       - run: yarn test:unit
