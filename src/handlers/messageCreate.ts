@@ -1,5 +1,5 @@
 import { Client, Message, MessageType } from 'discord.js';
-import { reactionForAnyContent } from 'reactions';
+import { randomReaction, reactionInContent } from 'reactions';
 import { chance, getDebug } from 'utils';
 
 export const messageCreate = async (message: Message<boolean>, server: Client): Promise<void> => {
@@ -9,6 +9,7 @@ export const messageCreate = async (message: Message<boolean>, server: Client): 
 
   await Promise.all([
     chance(0.0001, () => message.reply('💤💤💤 I sleep. 💤💤💤')),
-    reactionForAnyContent(message, server)
+    randomReaction(message, server),
+    reactionInContent(message, server)
   ]);
 };
