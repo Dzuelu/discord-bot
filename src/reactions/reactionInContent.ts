@@ -19,7 +19,8 @@ const reactWith = async (
   }
 };
 
-export const reactionForAnyContent = async (message: Message<boolean>, server: Client): Promise<void> => {
+// Looks for reaction names in a message and adds that reaction to that message
+export const reactionInContent = async (message: Message<boolean>, server: Client): Promise<void> => {
   await Promise.all([
     ...message.client.emojis.cache.map(emoji =>
       // Consider _ as a space and caps as different key words when checking reactions

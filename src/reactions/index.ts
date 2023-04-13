@@ -1,1 +1,2 @@
-export * from './reactionForAnyContent';
+export * from './randomReaction';
+export * from './reactionInContent';
