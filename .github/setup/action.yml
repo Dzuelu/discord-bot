@@ -6,7 +6,7 @@ runs:
     - name: Checkout submodules
       shell: bash
       run: git submodule update --init --recursive
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v3
       with:
         node-version: 18
     - run: yarn install --frozen-lockfile
