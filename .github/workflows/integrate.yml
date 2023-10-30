@@ -6,17 +6,29 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup
-        uses: ./.github/setup
-      - run: yarn lint
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm ci
+        shell: sh
+
+      - run: npm run lint
+        shell: sh
 
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup
-        uses: ./.github/setup
-      - run: yarn test:unit
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm ci
+        shell: sh
+
+      - run: npm run test:unit
+        shell: sh
