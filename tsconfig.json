@@ -5,11 +5,11 @@
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "lib": ["ES2021"],
+    "lib": ["ES2022"],
     "moduleResolution": "node",
     "sourceMap": true,
     "strictNullChecks": true,
-    "target": "ES2021"
+    "target": "ES2022"
   },
   "exclude": ["node_modules"]
 }
