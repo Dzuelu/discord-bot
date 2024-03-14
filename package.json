@@ -2,7 +2,7 @@
   "author": "Dzuelu <Dzuelu@users.noreply.github.com>",
   "dependencies": {
     "@discordjs/builders": "1.x",
-    "@discordjs/rest": "1.x",
+    "@discordjs/rest": "2.x",
     "discord-api-types": "0.37.x",
     "discord.js": "14.x",
     "dotenv": "16.x",
@@ -19,7 +19,7 @@
     "dzuelu-eslint-config": "1.x",
     "jest": "29.x",
     "ts-jest": "29.x",
-    "typescript": "5.2.x"
+    "typescript": "5.3.x"
   },
   "engines": {
     "node": ">=18"
@@ -31,7 +31,7 @@
   "repository": "git@github.com:Dzuelu/discord-bot.git",
   "scripts": {
     "client": "yarn --silent script src/client.ts",
-    "lint": "ts-eslint-cli . --ext .ts",
+    "lint": "eslint . --ext .ts",
     "rest": "yarn --silent script src/rest.ts",
     "script": "node -r ts-node/register -r tsconfig-paths/register -r dotenv/config",
     "startup": "yarn rest && yarn client",
