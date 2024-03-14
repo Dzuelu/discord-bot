@@ -11,8 +11,10 @@
 !*.sh
 !*.ts
 !*.yml
+!Dockerfile
 !eslint-config
 !yarn.lock
 
 # Always ignore
 node_modules
+.env

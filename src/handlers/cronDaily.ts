@@ -4,12 +4,11 @@ import { randomFrom } from 'utils';
 const setActivity = async (client: Client<boolean>): Promise<void> => {
   await client.user?.setActivity(
     randomFrom(
-      {},
+      { name: '' },
       { name: 'bideo james, ur not invited.', type: ActivityType.Playing },
       // { name: 'Skyrim with ToddBot', type: ActivityType.Playing }, // Todd bot dead :(
       // { name: 'Skyrim with ToddBot', type: ActivityType.Competing },
       // { name: 'ToddBot talk about Skyrim', type: ActivityType.Listening },
-      { details: 'magic tricks to make friends', type: ActivityType.Watching },
       { name: 'bideos', type: ActivityType.Watching },
       {
         name: 'a video to cool people',
