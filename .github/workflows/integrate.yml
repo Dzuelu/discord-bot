@@ -12,10 +12,14 @@ jobs:
         with:
           node-version: 18
 
-      - run: npm ci
+      - name: Install yarn
+        run: npm install -g yarn
         shell: sh
 
-      - run: npm run lint
+      - run: yarn install
+        shell: sh
+
+      - run: yarn lint
         shell: sh
 
   test:
@@ -27,8 +31,12 @@ jobs:
         with:
           node-version: 18
 
-      - run: npm ci
+      - name: Install yarn
+        run: npm install -g yarn
         shell: sh
 
-      - run: npm run test:unit
+      - run: yarn install
+        shell: sh
+
+      - run: yarn test:unit
         shell: sh
